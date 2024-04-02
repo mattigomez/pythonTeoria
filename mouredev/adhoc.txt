@@ -1,0 +1,133 @@
+Se deben completar las funciones proporcionadas para que al correr la función main() devuelva el resultado esperado.
+lista_personas = [
+    ('11111111', 'Pedro', 'Paez', 24),
+    ('22222222', 'Fito', 'Garcia', 23),
+    ('33333333', 'Leo', 'Peralta', 26),
+    ('44444444', 'Bruno', 'Mac', 25),
+    ('55555555', 'Nico', 'Zaoral', 27),
+    ('44444444', 'Bruno', 'Mac', 25),
+]
+
+
+def ordenar(lista_personas):
+    """El método debe devolver una lista con las edades ordenadas de menor a mayor"""
+    return sorted([persona[3] for persona in lista_personas])
+
+
+def convertir_a_diccionario(lista_personas):
+    """Hacer un diccionario que tenga como claves los “dni” y como valores tuplas con nombre, apellido y edad"""
+    diccionario = {}
+    for dni, nombre, apellido, edad in lista_personas:
+        diccionario[dni] = (nombre, apellido, edad)
+    return diccionario
+
+
+def devolver_edad(lista_personas, dni):
+    """Para la 'lista_personas' devuelve la edad de la persona que tenga el dni definido."""
+    diccionario = convertir_a_diccionario(lista_personas)
+    return diccionario.get(dni, "DNI no encontrado")
+
+
+def eliminar_repetidos(lista_personas):
+    """El método debe devolver los elementos únicos"""
+    return list(set(lista_personas))
+
+
+def separar_por_edad(lista_personas):
+    """Devolver dos listas
+    * lista 1: mayores de 25 (incluido)
+    * lista 2: menores de 25
+    """
+    mayores_de_25 = []
+    menores_de_25 = []
+    for persona in lista_personas:
+        if persona[3] >= 25:
+            mayores_de_25.append(persona)
+        else:
+            menores_de_25.append(persona)
+    return mayores_de_25, menores_de_25
+
+
+def obtener_promedio(lista):
+    """Implementar obtener el promedio de la lista de números que se recibe.
+    Capturar con un try/except la excepción de dividir por cero"""
+    try:
+        promedio = sum(lista) / len(lista)
+    except ZeroDivisionError:
+        return "No se puede calcular el promedio de una lista vacía"
+    return promedio
+
+
+def main():
+    """Este método no debe modificarse y es solo a fines de probar el código"""
+    print('Resultados:\n')
+    print(' * Edades ordenadas: %s\n' % ordenar(lista_personas))
+    print(' * Elementos como diccionario: %s\n' % convertir_a_diccionario(lista_personas))
+    print(' * La edad para dni 55555555 es: %s\n' % devolver_edad(lista_personas, '55555555'))
+    print(' * Elementos únicos: %s\n' % eliminar_repetidos(lista_personas))
+    print(' * Los mayores de 25 son: %s\n' % separar_por_edad(lista_personas)[0])
+    print(' * Los menores de 25 son: %s\n' % separar_por_edad(lista_personas)[1])
+    print(' * El promedio de las edades es: %s\n' % obtener_promedio(ordenar(lista_personas)))
+    print(' * El promedio de una lista vacía es: %s\n' % obtener_promedio([]))
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+explicacion: 
+
+¡Claro! Aquí tienes un paso a paso del programa para que puedas explicarlo en una entrevista:
+
+Definición de la lista de personas: El programa comienza con la definición de una lista llamada lista_personas. Esta lista contiene tuplas, donde cada tupla representa información sobre una persona, incluyendo su DNI, nombre, apellido y edad.
+
+Función ordenar(lista_personas): Esta función toma la lista de personas como entrada y devuelve una lista con las edades ordenadas de menor a mayor. Para lograr esto, se extraen las edades de cada tupla de la lista, se ordenan usando la función sorted(), y luego se devuelve la lista ordenada.
+
+Función convertir_a_diccionario(lista_personas): Esta función convierte la lista de personas en un diccionario donde las claves son los DNIs y los valores son tuplas con el nombre, apellido y edad de cada persona. Itera sobre cada tupla en la lista de personas y agrega una entrada al diccionario con el DNI como clave y una tupla con el nombre, apellido y edad como valor.
+
+Función devolver_edad(lista_personas, dni): Esta función recibe como entrada la lista de personas y un DNI, y devuelve la edad de la persona correspondiente al DNI especificado. Utiliza el diccionario creado anteriormente para buscar el DNI y obtener la edad correspondiente.
+
+Función eliminar_repetidos(lista_personas): Esta función elimina los elementos duplicados de la lista de personas y devuelve una lista con elementos únicos. Utiliza el tipo de datos set() para eliminar duplicados y luego convierte el conjunto de nuevo a una lista.
+
+Función separar_por_edad(lista_personas): Esta función divide la lista de personas en dos listas separadas: una lista de personas mayores o iguales a 25 años y otra lista de personas menores de 25 años. Itera sobre la lista de personas y compara la edad de cada persona para determinar en qué lista debe colocarse.
+
+Función obtener_promedio(lista): Esta función calcula el promedio de una lista de números. Utiliza la función sum() para sumar todos los elementos de la lista y la función len() para obtener la cantidad de elementos. Luego, calcula el promedio dividiendo la suma por la cantidad de elementos. Además, utiliza un bloque try/except para manejar la excepción de dividir por cero en caso de que la lista esté vacía.
+
+Función main(): Esta función imprime los resultados de todas las funciones anteriores. Llama a cada función con la lista de personas como argumento y muestra los resultados formateados en la consola.
+
+Explicar cada parte del programa de esta manera te permitirá demostrar tu comprensión del código y cómo funciona cada función individualmente para lograr los resultados deseados
+
+
+terminal y ejecutar : 
+
+
+
+Para ejecutar el ejercicio, sigue estos pasos:
+
+Abrir una terminal:
+
+Si estás en un sistema operativo basado en Unix (como Linux o macOS), abre la terminal desde el menú de aplicaciones o utilizando el atajo de teclado.
+Si estás en Windows, abre el símbolo del sistema o PowerShell.
+Navegar al directorio donde se encuentra el archivo del ejercicio:
+
+Utiliza el comando cd (change directory) seguido de la ruta del directorio donde se encuentra tu archivo Python. Por ejemplo:
+
+
+
+cd ruta/del/directorio
+
+Ejecutar el método principal:
+
+Una vez en el directorio correcto, ejecuta el script Python utilizando el comando python seguido del nombre del archivo. Si el archivo se llama ejercicio.py, por ejemplo, sería:
+
+
+python ejercicio.py
+
+Esto ejecutará el método main() definido en el archivo Python y mostrará los resultados en la terminal.
+Si has seguido estos pasos correctamente, deberías ver los resultados del ejercicio impresos en la terminal.
+
+
+
+
+
